@@ -4,10 +4,10 @@ import { Sidebar, Videos } from './';
 import { FetchFromAPI } from '../Utils/FetchFromAPI';
 const Feed = () => {
     const [selectedCategory, setSelectedCategory] = useState("New");
-    const [videos, setVideos] = useState([]);
+    const [videos, setVideos] = useState(null);
     useEffect(() => {
         FetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-            .then((data) => setVideos(data.item));
+            .then((data) => setVideos(data.items));
     }, [selectedCategory]);
     return (
         <>
